@@ -1,0 +1,4 @@
+vnstat:
+  enabled: True
+  interfaces:
+  - eth0
