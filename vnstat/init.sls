@@ -1,10 +1,10 @@
 {% if salt['pillar.get']('vnstat:enabled', False) %}
 vnstat:
   pkg.installed:
-  - name: 'vnstat'
+  - name: vnstat
 
 {% for interface in vnstat.interfaces %}
-vnstat:
+vnstat-cron-{{ interface }}:
   cron.present:
   - name: 'vnstat -u -i {{ interface }}'
   - minute: '*/5'
