@@ -3,7 +3,7 @@ vnstat:
   pkg.installed:
   - name: vnstat
 
-{% for interface in vnstat.interfaces %}
+{% for interface in  salt['pillar.get']('vnstat.interfaces', []) %}
 vnstat-cron-{{ interface }}:
   cron.present:
   - name: 'vnstat -u -i {{ interface }}'
